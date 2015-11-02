@@ -39,6 +39,20 @@ public class studentInfo{
             dao.update(id,phone);
             System.out.println("학생수정이 완료되었습니다.");
             break;
+         case 3:
+             System.out.println("*********** 학생삭제 ************* ");
+             System.out.println("삭제하고 싶은 학생의 ID: ");
+             id = key.next();
+             dao.delete(id);
+             System.out.println("학생삭제가 완료되었습니다.");
+             break;
+          case 4:
+             System.out.println("*********** 학생조회 ************* ");
+             System.out.println("조회하고 싶은 학생의 ID: ");
+             id = key.next();
+             dao.view(id);
+             System.out.println("학생조회가 완료되었습니다.");
+             break;
          
             
       }

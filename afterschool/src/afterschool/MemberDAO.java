@@ -47,6 +47,45 @@ public class MemberDAO {
       }
       return rst;
    }
+   public int delete(String id){
+	      int rst = 0;
+	      Connection conn = null;
+	      PreparedStatement ps = null;
+	      try{
+	         conn = ConnUtil.getConnection();
+	         String sql = "delete from student where id = ?";
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, id);
+	         rst = ps.executeUpdate();
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }finally{
+	         ConnUtil.close(ps, conn);
+	      }
+	      return rst;
+	   }
+	   
+	 public void view(String id){
+	      ResultSet rs = null;
+	      Connection conn = null;
+	      PreparedStatement ps = null;
+	      try{
+	         conn = ConnUtil.getConnection();
+	         String sql = "select * from student where id ="+"'"+id+"'";
+	         ps = conn.prepareStatement(sql);
+	         rs = ps.executeQuery(sql);
+	         System.out.println("ID\tNAME\tDEPARTMENT\tPHONE");
+	         while(rs.next()){
+	            System.out.println(rs.getString(1)+'\t'+rs.getString(2)+'\t'+rs.getString(3)+'\t'+rs.getString(4));
+
+	         }
+	            
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }finally{
+	         ConnUtil.close(ps, conn);
+	      }
+	   }
    
 }
 
