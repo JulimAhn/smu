@@ -8,6 +8,7 @@ public class studentInfo{
       Scanner key = new Scanner(System.in);
       MemberDAO dao = new MemberDAO();
       String id, name, department, phone;
+      int result=0;
       System.out.println("*********** 학생 정보 시스템 ********");
       System.out.println("1. 학생등록");
       System.out.println("2. 학생수정");
@@ -27,8 +28,11 @@ public class studentInfo{
             department = key.next();
             System.out.println("Phone(숫자,공백없이): ");
             phone = key.next();
-            dao.add(id, name, department, phone);
-            System.out.println("학생등록이 완료되었습니다.");
+            result = dao.add(id, name, department, phone);
+            if(result==1)
+           	 System.out.println("학생추가가 완료되었습니다.");
+            else
+           	 System.out.println("학생추가가 실패하였습니다.");
             break;
          case 2:
             System.out.println("*********** 학생수정 ************* ");
@@ -36,22 +40,27 @@ public class studentInfo{
             id = key.next();
             System.out.println("수정할 휴대폰번호를 입력하세요: ");
             phone = key.next();
-            dao.update(id,phone);
-            System.out.println("학생수정이 완료되었습니다.");
+            result =dao.update(id,phone);
+            if(result==1)
+           	 System.out.println("학생수정이 완료되었습니다.");
+            else
+           	 System.out.println("학생수정이 실패하였습니다.");
             break;
          case 3:
              System.out.println("*********** 학생삭제 ************* ");
              System.out.println("삭제하고 싶은 학생의 ID: ");
              id = key.next();
-             dao.delete(id);
-             System.out.println("학생삭제가 완료되었습니다.");
+             result = dao.delete(id);
+             if(result==1)
+            	 System.out.println("학생삭제가 완료되었습니다.");
+             else
+            	 System.out.println("학생삭제가 실패하였습니다."); 
              break;
           case 4:
              System.out.println("*********** 학생조회 ************* ");
              System.out.println("조회하고 싶은 학생의 ID: ");
              id = key.next();
              dao.view(id);
-             System.out.println("학생조회가 완료되었습니다.");
              break;
          
             

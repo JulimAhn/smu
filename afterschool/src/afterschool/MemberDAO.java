@@ -74,7 +74,6 @@ public class MemberDAO {
 	         String sql = "select * from student where id ="+"'"+id+"'";
 	         ps = conn.prepareStatement(sql);
 	         rs = ps.executeQuery(sql);
-	         System.out.println("ID\tNAME\tDEPARTMENT\tPHONE");
 	         while(rs.next()){
 	            System.out.println(rs.getString(1)+'\t'+rs.getString(2)+'\t'+rs.getString(3)+'\t'+rs.getString(4));
 
